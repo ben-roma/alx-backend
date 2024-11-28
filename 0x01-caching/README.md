@@ -1,100 +1,38 @@
-# Caching
+# 0x01-caching
 
-The learning objectives of this project are:
+This project explores different caching algorithms and their implementations. Caching is a crucial technique for improving the performance of applications by storing frequently accessed data in a temporary storage location, reducing the need to repeatedly fetch it from the primary source.
 
-- What a caching system is
-- What FIFO means
-- What LIFO means
-- What LRU means
-- What MRU means
-- What LFU means
-- What the purpose of a caching system
-- What limits a caching system have
+## Learning Objectives
 
-## 0. Basic dictionary 
-Create a class `BasicCache` that inherits from `BaseCaching` and is a caching system:
+By the end of this project, you should be able to:
 
-- You must use `self.cache_data` - dictionary from the parent class `BaseCaching`
-- This caching system doesn’t have limit
-- `def put(self, key, item):`
-  - Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
-  - If `key` or `item` is `None`, this method should not do anything.
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to `key`.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`.
+* Understand the benefits and use cases of caching.
+* Explain different caching algorithms (FIFO, LIFO, LRU, MRU, LFU).
+* Implement these caching algorithms using Python.
+* Analyze the performance of different caching strategies.
 
-## 1. FIFO caching
-Create a class `FIFOCache` that inherits from `BaseCaching` and is a caching system:
+## Project Structure
 
-- You must use `self.cache_data` - dictionary from the parent class `BaseCaching`
-- You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
-- `def put(self, key, item):`
-    - Must assign to the dictionary `self.cache_data` the item value for the key `key`.
-    - If `key` or `item` is `None`, this method should not do anything.
-    - If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
-        - you must discard the first item put in cache (FIFO algorithm)
-        - you must print `DISCARD:` with the `key` discarded and following by a new line
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to key.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`.
+The project is organized into a series of tasks, each focusing on a specific caching algorithm:
 
-## 2. LIFO Caching
-Create a class `LIFOCache` that inherits from `BaseCaching` and is a caching system:
+* **0-basic_cache.py:** Implements a basic caching system.
+* **1-fifo_cache.py:** Implements the FIFO (First-In, First-Out) caching algorithm.
+* **2-lifo_cache.py:** Implements the LIFO (Last-In, First-Out) caching algorithm.
+* **3-lru_cache.py:** Implements the LRU (Least Recently Used) caching algorithm.
+* **4-mru_cache.py:** Implements the MRU (Most Recently Used) caching algorithm.
+* **100-lfu_cache.py:** Implements the LFU (Least Frequently Used) caching algorithm.
 
-- You must use `self.cache_data` - dictionary from the parent class BaseCaching
-- You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
-- `def put(self, key, item):`
-    - Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
-    - If `key` or `item` is `None`, this method should not do anything.
-    - If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
-        - you must discard the last item put in cache (LIFO algorithm)
-        - you must print `DISCARD:` with the `key` discarded and following by a new line
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to `key`.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`
+## Technologies Used
 
-## 3. LRU Caching
-Create a class `LRUCache` that inherits from `BaseCaching` and is a caching system:
+* Python
 
-- You must use `self.cache_data` - dictionary from the parent class BaseCaching
-- You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
-- `def put(self, key, item):`
-    - Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
-    - If `key` or `item` is `None`, this method should not do anything.
-    - If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
-        - you must discard the least recently used item (LRU algorithm)
-        - you must print `DISCARD:` with the `key` discarded and following by a new line
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to `key`.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`
+## Resources
 
-## 4. MRU Caching
-Create a class `MRUCache` that inherits from `BaseCaching` and is a caching system:
+* [Caching](https://en.wikipedia.org/wiki/Cache_(computing))
+* [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))
+* [LIFO](https://en.wikipedia.org/wiki/LIFO_(computing))
+* [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU))
+* [MRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU))
+* [LFU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least-frequently_used_(LFU))
 
-- You must use `self.cache_data` - dictionary from the parent class BaseCaching
-- You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
-- `def put(self, key, item):`
-    - Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
-    - If `key` or `item` is `None`, this method should not do anything.
-    - If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
-        - you must discard the most recently used item (MRU algorithm)
-        - you must print `DISCARD:` with the `key` discarded and following by a new line
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to `key`.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`
-
-## 100. LFU Caching
-Create a class `LFUCache` that inherits from `BaseCaching` and is a caching system:
-
-- You must use `self.cache_data` - dictionary from the parent class BaseCaching
-- You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
-- `def put(self, key, item):`
-    - Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
-    - If `key` or `item` is `None`, this method should not do anything.
-    - If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
-        - you must discard the least frequency used item (LFU algorithm)
-        - if you find more than 1 item to discard, you must use the LRU algorithm to discard only the least recently used
-        - you must print `DISCARD:` with the `key` discarded and following by a new line
-- `def get(self, key):`
-    - Must return the value in `self.cache_data` linked to `key`.
-    - If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`
+This README provides a comprehensive overview of the 0x01-caching project, outlining its objectives, structure, and the technologies involved. It serves as a guide for anyone interested in learning about and implementing different caching algorithms.
